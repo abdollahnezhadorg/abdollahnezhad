@@ -3841,7 +3841,7 @@ async function getXrayWarpConfigs (env, client) {
     xrayWarpConfig.routing.rules[xrayWarpConfig.routing.rules.length - 1].outboundTag = 'proxy';
     delete xrayWarpConfig.observatory;
     delete xrayWarpConfig.routing.balancers;
-    xrayWarpBestPing.remarks = client === 'nikang' ? '💦 Warp Pro Best Ping 🚀' : '💦 Warp Best Ping 🚀';
+    xrayWarpBestPing.remarks = client === 'nikang' ? 'POORIA Warp Pro Best Ping 🚀' : 'POORIA Warp Best Ping 🚀';
     xrayWarpBestPing.dns = await buildXrayDNSObject('1.1.1.1', localDNS, blockAds, bypassIran, bypassChina, bypassLAN, blockPorn, false);
     xrayWarpBestPing.routing.rules = buildXrayRoutingRules(localDNS, blockAds, bypassIran, blockPorn, bypassLAN, bypassChina, blockUDP443, false, true, false, true);
     xrayWarpBestPing.outbounds.splice(0,1);
@@ -3857,7 +3857,7 @@ async function getXrayWarpConfigs (env, client) {
     xrayWarpOutbounds.forEach((outbound, index) => {
         xrayWarpConfigs.push({
             ...xrayWarpConfig,
-            remarks: client === 'nikang' ? `💦 Warp Pro ${index + 1} 🇮🇷` : `💦 Warp ${index + 1} 🇮🇷`,
+            remarks: client === 'nikang' ? `POORIA Warp Pro ${index + 1} 🇮🇷` : `POORIA Warp ${index + 1} 🇮🇷`,
             outbounds: [{...outbound, tag: 'proxy'}, ...xrayWarpConfig.outbounds]
         });
     });
@@ -3868,7 +3868,7 @@ async function getXrayWarpConfigs (env, client) {
             let xrayWoWConfig = structuredClone(xrayWoWConfigTemp);
             const chainOutbound = structuredClone(outbound);
             const proxyOutbound = structuredClone(xrayWoWOutbounds[index + 1]);
-            xrayWoWConfig.remarks = client === 'nikang' ? `💦 WoW Pro ${proxyIndex} 🌍` : `💦 WoW ${proxyIndex} 🌍`;
+            xrayWoWConfig.remarks = client === 'nikang' ? `POORIA WoW Pro ${proxyIndex} 🌍` : `POORIA WoW ${proxyIndex} 🌍`;
             xrayWoWConfig.routing.rules[xrayWoWConfig.routing.rules.length - 1].outboundTag = 'chain';
             xrayWoWConfig.outbounds = [ chainOutbound, proxyOutbound, ...xrayWoWConfig.outbounds ];
             xrayWarpConfigs.push(xrayWoWConfig);
@@ -3881,7 +3881,7 @@ async function getXrayWarpConfigs (env, client) {
     });
 
     let xrayWoWBestPing = structuredClone(xrayWarpBestPing);
-    xrayWoWBestPing.remarks = client === 'nikang' ? '💦 WoW Pro Best Ping 🚀' : '💦 WoW Best Ping 🚀';
+    xrayWoWBestPing.remarks = client === 'nikang' ? 'POORIA WoW Pro Best Ping 🚀' : 'POORIA WoW Best Ping 🚀';
     xrayWoWBestPing.routing.balancers[0].selector = ['chain'];
     xrayWoWBestPing.observatory.subjectSelector = ['chain'];
     xrayWarpBestPing.outbounds = [...xrayWarpOutbounds, ...xrayWarpBestPing.outbounds];
